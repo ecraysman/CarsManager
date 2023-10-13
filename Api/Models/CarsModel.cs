@@ -3,36 +3,31 @@
 namespace Api.Models
 
 {
-    public enum Maker
-    {
-        Toyota, Honda, Ford, Fiat, Chevrolet
-    }
-
-    public enum Trim
-    { Base, Full, Intermediate, Ludicrous }
 
     public class CarsModel
     {
 
         [Required]
-        public Maker Maker { get; set; }
+        [MinLength(5)]
+        public string Maker { get; set; }
 
         [Required]
-        public Trim Trim { get; set;}
+        [MinLength(3)]
+        public string Trim { get; set;}
 
         [Required]
         [Range(1950, 2023 )] //ToDo: Fix, this is a lousy hack
         public int Year { get; set;}
 
         [Required]
-        [MinLength(1)]
+        [MinLength(5)]
         public string Model { get; set;}
 
         [Required]
-        [Range(0, int.MaxValue, ErrorMessage = "Please enter valid integer Number")] // Probably needs to be validated with the database
-        public int Driver { get; set;} //fk a user?
+        [MinLength(5)]
+        public string Driver { get; set;}
         [Required]
-        [MinLength(1)]
+        [MinLength(5)]
         public string Mechanic { get; set;}
 
         [Required]
@@ -40,7 +35,7 @@ namespace Api.Models
         public string LastMaintenance { get; set;}
 
         [Required]
-        [Range(0, int.MaxValue, ErrorMessage = "Please enter valid integer Number")] // Probably needs to be validated with the database
+        [Range(3, int.MaxValue, ErrorMessage = "Please enter valid integer Number")] // Probably needs to be validated with the database
         /// <summary>
         /// Odometer read at the LastMaintenance date.
         /// </summary>
@@ -51,6 +46,10 @@ namespace Api.Models
         public CarsModel() { 
             Model = string.Empty;
             Mechanic = string.Empty;
+            Maker = string.Empty;
+            Trim = string.Empty;
+            Driver = string.Empty;
+            LastMaintenance = string.Empty;
         }
 
 

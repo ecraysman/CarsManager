@@ -1,31 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PetaPoco;
-
+﻿using PetaPoco;
 
 namespace ORM
 {
     public class Cars
     {
 
-        public enum Maker
-        {
-            Toyota, Honda, Ford, Fiat, Chevrolet
-        }
-
-        public enum Trim
-        { Base, Full, Intermediate, Ludicrous }
-
-
         [TableName("Cars")]
         [PrimaryKey("Id")]
-        public class CarsDBModel //: IEnumerable<CarsDBModel>
+        public class CarsDBModel 
         {
-
             [Column("Id")]
             public int Id { get; set; }
 
@@ -42,7 +25,7 @@ namespace ORM
             public string Model { get; set; }
 
             [Column("Driver")]
-            public int Driver { get; set; } //fk a user?
+            public string Driver { get; set; } 
 
             [Column("Mechanic")]
             public string Mechanic { get; set; }
@@ -51,22 +34,20 @@ namespace ORM
             public string LastMaintenance { get; set; }
 
             [Column("LastOdometer")]
-            /// <summary>
-            /// Odometer read at the LastMaintenance date.
-            /// </summary>
-            /// 
             public long LastOdometer { get; set; }
-
 
             public CarsDBModel()
             {
                 Model = string.Empty;
                 Mechanic = string.Empty;
+                Maker = string.Empty;
+                Trim = string.Empty;
+                Driver = string.Empty;
+                LastMaintenance = string.Empty;
             }
 
-            public CarsDBModel(string _Model, string _Mechanic, long _LastOdometer, int _Driver, int _Year, string _Trim , string _Maker, string _LastMaintenance)
+            public CarsDBModel(string _Model, string _Mechanic, long _LastOdometer, string _Driver, int _Year, string _Trim, string _Maker, string _LastMaintenance)
             {
-                
                 Model = _Model;
                 Mechanic = _Mechanic;
                 LastOdometer = _LastOdometer;
@@ -75,17 +56,7 @@ namespace ORM
                 Trim = _Trim;
                 LastMaintenance = _LastMaintenance;
                 Maker = _Maker;
-
             }
-
-
-
-
-
-
-
         }
     }
-
-
 }

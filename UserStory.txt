@@ -1,1 +1,8 @@
-John needs an api to store the cars in his fleet, who's driving them and who's the assigned mechanic
+
+John is the manager of a Fleet of Cars in Company XYZ.
+He needs an internal app to manage and log the assigned driver, mechanic, basic car info, odometer reading and last maintenance event.
+
+
+Security
+Users can be created with any information
+Username cannot be changed.
